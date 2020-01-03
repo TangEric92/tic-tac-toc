@@ -3,8 +3,9 @@ import "./index.css";
 import "./App.css";
 import Header from "./Components/Header";
 import Grid from "./Components/Grid";
-import Case from "./Components/Case";
 import Line from "./Components/Line";
+import Case from "./Components/Case";
+import Retry from "./Components/Retry";
 
 class App extends React.Component {
   state = {
@@ -17,7 +18,8 @@ class App extends React.Component {
     case31: null,
     case32: null,
     case33: null,
-    xIsNext: true
+    xIsNext: Math.floor(Math.random() * 2) - 1, // * 2 car le floor fausse le resultat
+    playOnce: false
   };
 
   winner = null;
@@ -40,7 +42,8 @@ class App extends React.Component {
           // On fait ça car on a besoin du nom de la variable du state pour la mettre a jour
           this.setState({
             [caseName]: this.nextPlayer, // ici on met caseName entre [] car on interprete son contenu
-            xIsNext: !this.state.xIsNext
+            xIsNext: !this.state.xIsNext,
+            playOnce: this.state.playOnce + 1
           });
         }}
       />
@@ -95,6 +98,24 @@ class App extends React.Component {
     return null;
   };
 
+  retry = () => {
+    // On remet toute les valeurs utilisées par defaut
+    this.winner = null;
+    this.setState({
+      case11: null,
+      case12: null,
+      case13: null,
+      case21: null,
+      case22: null,
+      case23: null,
+      case31: null,
+      case32: null,
+      case33: null,
+      xIsNext: Math.floor(Math.random() * 2) - 1, // * 2 car le floor fausse le resultat
+      playOnce: false
+    });
+  };
+
   render = () => {
     // Ici on transforme les states en tableau de tableau
     // A l'image d'un morpion
@@ -113,11 +134,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header winner={this.winner} nextPlayer={this.nextPlayer} />
-        <Grid>
-          {this.morpion.map((line, i) => {
-            return this.createLine(line, i);
-          })}
-        </Grid>
+        {this.winner === null && (
+          <Grid>
+            {this.morpion.map((line, i) => {
+              return this.createLine(line, i);
+            })}
+          </Grid>
+        )}
+        <Retry onClick={this.retry} display={this.state.playOnce} />
       </div>
     );
   };
