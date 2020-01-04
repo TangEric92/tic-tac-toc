@@ -1,16 +1,14 @@
 import React from "react";
 
-class Retry extends React.Component {
-  render = () => {
-    const { onClick, display } = this.props;
+function Retry(props) {
+  const { onClick, display } = props;
 
-    // Désolé Farid
-    return (
-      <div className={display ? "retry" : "retry-hidden"} onClick={onClick}>
-        Rejouer la partie
-      </div>
-    );
-  };
+  // Désolé Farid
+  return (
+    <div className={display ? "retry" : "retry-hidden"} onClick={onClick}>
+      Rejouer la partie
+    </div>
+  );
 }
 
 export default Retry;
