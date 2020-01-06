@@ -5,8 +5,8 @@ module.exports = {
       user: "deploy",
       host: "alexdana.me",
       ref: "origin/develop",
-      repo: "git@github.com:misteralex95/leaderboard.git",
-      path: "/home/deploy/leaderboard",
+      repo: "git@github.com:misteralex95/tic-tac-toc.git",
+      path: "/home/deploy/tic-tac-toc",
       "post-deploy":
         ". ~/.bashrc && npm install && pm2 reload ecosystem.config.js --env production && npm start",
       env: {
