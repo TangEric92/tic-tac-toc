@@ -4,10 +4,11 @@ module.exports = {
     production: {
       user: "deploy",
       host: "alexdana.me",
-      ref: "origin/master",
-      repo: "https://github.com/MisterAlex95/tic-tac-toc.git",
-      path: "/home/deploy/tic-tac-toc",
-      "post-deploy": "source ~/.bashrc && yarn install && yarn run build",
+      ref: "origin/develop",
+      repo: "git@github.com:misteralex95/leaderboard.git",
+      path: "/home/deploy/leaderboard",
+      "post-deploy":
+        ". ~/.bashrc && npm install && pm2 reload ecosystem.config.js --env production && npm start",
       env: {
         NODE_ENV: "production"
       }
