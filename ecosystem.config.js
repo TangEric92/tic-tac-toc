@@ -4,7 +4,7 @@ module.exports = {
     production: {
       user: "deploy",
       host: "alexdana.me",
-      ref: "origin/develop",
+      ref: "origin/master",
       repo: "git@github.com:misteralex95/tic-tac-toc.git",
       path: "/home/deploy/tic-tac-toc",
       "post-deploy":
