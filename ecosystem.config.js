@@ -8,7 +8,7 @@ module.exports = {
       repo: "git@github.com:misteralex95/tic-tac-toc.git",
       path: "/home/deploy/tic-tac-toc",
       "post-deploy":
-        ". ~/.bashrc && yarn install && pm2 reload ecosystem.config.js --env production && yarn start",
+        ". ~/.bashrc && npm install && pm2 reload ecosystem.config.js --env production && npm start",
       env: {
         NODE_ENV: "production"
       }
