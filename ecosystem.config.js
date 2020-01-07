@@ -1,5 +1,15 @@
 module.exports = {
-  apps: [],
+  apps: [
+    {
+      name: "tic-tac-toc",
+      script: "npx",
+      interpreter: "none",
+      args: "serve build -s",
+      env_production: {
+        NODE_ENV: "production"
+      }
+    }
+  ],
   deploy: {
     production: {
       user: "deploy",
